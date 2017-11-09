@@ -1,14 +1,17 @@
-FROM debian:stretch
+#FROM debian:stretch
+FROM phusion/baseimage:v0.9.22
 
 # Superset version
 ARG SUPERSET_VERSION=0.20.5
+
+RUN groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody && mkdir -p /app/superset
 
 # Configure environment
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     PYTHONPATH=/etc/superset:$PYTHONPATH \
     SUPERSET_VERSION=${SUPERSET_VERSION} \
-    SUPERSET_HOME=/home/superset
+    SUPERSET_HOME=/app/superset
 
 # Create superset user & install dependencies
 RUN useradd -U -m superset && \
