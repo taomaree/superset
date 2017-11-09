@@ -12,8 +12,8 @@ ENV LANG=C.UTF-8 \
     SUPERSET_HOME=/app/superset
 
 RUN groupmod -g 99 nogroup && usermod -u 99 -g 99 nobody \
-    mkdir -p ~/.pip && echo [global] > ~/.pip/pip.conf && echo "index-url = https://pypi.mirrors.ustc.edu.cn/simple" >> ~/.pip/pip.conf \
-    sed -i 's@ .*.ubuntu.com@ https://mirrors.ustc.edu.cn@g' /etc/apt/sources.list \
+    && mkdir -p ~/.pip && echo [global] > ~/.pip/pip.conf && echo "index-url = https://pypi.mirrors.ustc.edu.cn/simple" >> ~/.pip/pip.conf \
+    && sed -i 's@ .*.ubuntu.com@ https://mirrors.ustc.edu.cn@g' /etc/apt/sources.list \
     && mkdir -p /app/superset 
 
 # Create superset user & install dependencies
