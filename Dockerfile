@@ -19,7 +19,7 @@ RUN useradd -U -m superset && \
     apt-get install -y \
         build-essential \
         curl \
-        default-libmysqlclient-dev \
+        libmysqlclient-dev \
         libldap2-dev \
         libpq-dev \
         libsasl2-dev \
